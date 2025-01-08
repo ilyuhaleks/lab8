@@ -1,0 +1,41 @@
+@startuml
+class work8.Record {
+- String[] fields
++ String getField(int)
++ void setField(int,String)
++ Record clone()
++ String toString()
+}
+
+
+class work8.Main {
++ {static} void main(String[])
+}
+
+class work8.CSVTableLoader {
++ RelationalTable loadTable(String)
+}
+
+class work8.RelationalTable {
+- List<Record> records
++ void addRecord(Record)
++ List<Record> getRecords()
+}
+
+
+class work8.TableBuilder {
+- RelationalTable table
++ TableBuilder addRecord(String[])
++ RelationalTable build()
+}
+
+
+interface work8.TableLoader {
+~ RelationalTable loadTable(String)
+}
+
+
+
+work8.Cloneable <|.. work8.Record
+work8.TableLoader <|.. work8.CSVTableLoader
+@enduml
